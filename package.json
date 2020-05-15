@@ -2,6 +2,7 @@
     "name": "In-store Radio",
     "author": "Florian Wesch <fw@info-beamer.com>",
     "desc": "In-store Radio streaming with local fallback and scheduling",
+    "repository": "https://github.com/info-beamer/package-instore-radio",
     "platforms": ["pi/epoch-1", "pi-4"],
     "version": "beta1",
     "lifecycle": "beta",
