@@ -1,0 +1,22 @@
+#!/usr/bin/python2.7
+import time
+import sys
+import pytz
+from datetime import datetime
+from hosted import config, node
+
+config.restart_on_update()
+
+tz = pytz.timezone(config.timezone)
+
+while time.time() < 10000000:
+    print >>sys.stderr, "waiting for correct system time"
+    time.sleep(1)
+
+while 1:
+    now = pytz.utc.localize(datetime.utcnow(), is_dst=None).astimezone(tz)
+    node['/time'](dict(
+        hour = now.hour,
+        minute = now.minute,
+    ))
+    time.sleep(1)

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <h4>Manual overlay control</h4>
+    <div id='overlays'>
+      <button id='stop' class='btn btn-default'>Stop</button>
+    </div>
+
+    <h4>Control fallback/stream switching</h4>
+    <div class="btn-group">
+      <button id='fallback-yes' class='btn btn-default'>Force Fallback</button>
+      <button id='fallback-no' class='btn btn-default'>Auto Mode</button>
+    </div>
+
+    <div class='popup'></div>
+
+    <!-- Provides the interface to info-beamer hosted -->
+    <script src="hosted.js"></script>
+
+    <script>
+      "strict";
+
+      ib.setDefaultStyle()
+
+      ib.ready.then(() => {
+        for (let overlay of ib.config.overlays) {
+          const e = document.createElement("button")
+          e.classList.add('btn')
+          e.classList.add('btn-default')
+          const asset = ib.assets[overlay.file] || ib.node_assets[overlay.file]
+          e.innerText = asset.filename
+          e.addEventListener('click', e => {
+            console.log(overlay.file)
+            ib.sendCommand("overlay/play", JSON.stringify(overlay.file))
+          })
+          document.getElementById('overlays').appendChild(e)
+        }
+      })
+
+      document.getElementById('stop').addEventListener('click', e => {
+        ib.sendCommand("overlay/abort", "")
+      })
+
+      document.getElementById('fallback-yes').addEventListener('click', e => {
+        ib.sendCommand("fallback", "yes")
+      })
+
+      document.getElementById('fallback-no').addEventListener('click', e => {
+        ib.sendCommand("fallback", "no")
+      })
+    </script>
+  </body>
+</html>
+
