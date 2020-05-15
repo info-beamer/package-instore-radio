@@ -1,6 +1,13 @@
 {
     "name": "In-Store Radio Player",
     "control_ui": "control.html",
+    "optional": [
+        "COPYRIGHT",
+        ".*.md",
+        ".*.jpg",
+        ".*.html",
+        ".*.png"
+    ],
     "options": [{
         "title": "Stream settings",
         "type": "section",
@@ -72,7 +79,7 @@
             "name": "file",
             "type": "resource",
             "valid": ["audio"],
-            "default": "example.mp3"
+            "default": "idle.mp3"
         }]
     },
 
@@ -194,7 +201,7 @@
             "name": "file",
             "type": "resource",
             "valid": ["audio"],
-            "default": "example.mp3"
+            "default": "idle.mp3"
         }, {
             "title": "..combined with others on the same slot",
             "ui_width": 6,
