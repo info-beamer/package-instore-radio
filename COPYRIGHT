@@ -35,7 +35,15 @@ package-header.jpg
     https://unsplash.com/@heidifin
     https://unsplash.com/photos/2TLREZi7BUg
 
+deque.lua
+    MIT licensed:
+    https://github.com/catwell/cw-lua/blob/master/deque/deque.lua
+
 font.ttf:
     Office-Code-Pro Regular
     SIL Open Font License v1.1
     https://github.com/nathco/Office-Code-Pro
+
+idle.mp3:
+    CC0, created by Brandon Morris
+    https://opengameart.org/content/loading-screen-loop
