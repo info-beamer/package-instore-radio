@@ -27,7 +27,7 @@ audio quality.
  * Automatically detect silence in stream and trigger fallback
  * Overlay additional audio files at scheduled intervals
 
-## Setting up a playback device
+## Setting up the info-beamer device
 
 * Assemble the HiFiBerry by attaching it to your Raspberry Pi. Follow the instructions included with the hardware for that.
 * Install info-beamer on your Raspberry Pi by following the [device installation instructions](https://info-beamer.com/doc/installing-hosted).
@@ -35,6 +35,20 @@ audio quality.
 * Import this package by clicking the "Import package" button.
 * Create a new setup based on this package by clicking the "Create setup" button.
 * Assign this setup to your Pi.
+
+## Selecting a playback method
+
+This currently requires manual configuration adjustments. Shutdown your Pi, take the SD card and make the following changes:
+
+* HiFiBerry output (recommended)
+  * Add line `dtoverlay=hifiberry-dacplus` or `dtoverlay=hifiberry-dac` to `/config/userconfig.txt`
+  * Set content of file `/config/alsa` to `hifiberry`
+* Pi analog output
+  * Add `hdmi_ignore_edid_audio=1` to `/config/userconfig.txt` to force analog output
+  * Set content of file `/config/alsa` to `rpi`
+* Pi HDMI output
+  * Add `hdmi_force_edid_audio=1` to `/config/userconfig.txt` to force HDMI output
+  * Set content of file `/config/alsa` to `rpi`
 
 ## Playback configuration
 

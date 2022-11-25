@@ -7,7 +7,12 @@ from hosted import config, node
 
 config.restart_on_update()
 
-tz = pytz.timezone(config.timezone)
+timezone = config.timezone
+if timezone == "device":
+    timezone = config.metadata['timezone']
+print >>sys.stderr, "Using timezone: %s" % timezone
+
+tz = pytz.timezone(timezone)
 
 while time.time() < 10000000:
     print >>sys.stderr, "waiting for correct system time"
