@@ -1,5 +1,7 @@
 gl.setup(NATIVE_WIDTH, NATIVE_HEIGHT)
 
+local font = resource.load_font "font.ttf"
+
 if not sys.provides "audio" then
     function node.render()
         font:write(5, 5, "audio not enabled", 32, 1,1,1,1)
@@ -10,7 +12,6 @@ end
 
 util.no_globals()
 
-local font = resource.load_font "font.ttf"
 local json = require "json"
 local deque = require "deque"
 
